@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blind Test</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background: url('https://media.istockphoto.com/id/1151380473/fr/photo/n%C3%A9on-futuriste-moderne-sur-fond-de-chambre-mur-de-briques-vieux-grunge-rendu-3d.jpg?s=612x612&w=0&k=20&c=N7gUFvi0FnKGohnCTn71wh5HSmfhKYcDaSx7Wq7lPDo=') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+        }
+        h1 {
+            margin: 20px 0;
+            color: #fff;
+            font-size: 5em;
+            text-shadow: 0 0 10px #8d3cff, 0 0 20px #3ec1d3, 0 0 30px #3ec1d3;
+        }
+        h2 {
+            margin: 10px 0;
+            color: #fff;
+            font-size: 2.5em;
+            text-shadow: 0 0 10px #3ec1d3, 0 0 20px #8d3cff;
+        }
+        table {
+            width: 60%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background: rgba(50, 50, 70, 0.8);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 15px #3ec1d3, 0 0 30px #8d3cff;
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: center;
+            border: 1px solid rgba(141, 60, 255, 0.5);
+            color: #fff;
+            font-size: 1.2em;
+            text-shadow: 0 0 5px #3ec1d3, 0 0 10px #8d3cff;
+        }
+        th {
+            background-color: #3ec1d3;
+            color: #fff;
+            text-shadow: 0 0 5px #8d3cff, 0 0 10px #8d3cff;
+        }
+        tr:nth-child(even) {
+            background-color: rgba(62, 193, 211, 0.3);
+        }
+        tr:hover {
+            background-color: rgba(141, 60, 255, 0.5);
+            cursor: pointer;
+        }
+        td {
+            text-shadow: 0 0 5px #8d3cff, 0 0 10px #3ec1d3;
+            font-size: 1.5em; /* Aumento del tamaño de fuente */
+        }
+
+        .footer-text {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            font-size: 1em;
+            color: white;
+            text-shadow: 0 0 5px #3ec1d3, 0 0 10px #3ec1d3, 0 0 15px #3ec1d3;
+        }
+        .footer-text span {
+            color: #fff;
+            text-shadow: 0 0 5px #3ec1d3, 0 0 10px #3ec1d3, 0 0 15px #3ec1d3;
+        }
+
+        .marquee-container {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            overflow: hidden;
+            height: 40px;
+        }
+
+        .marquee {
+            display: inline-block;
+            white-space: nowrap;
+            font-size: 1.5em;
+            padding: 10px 0;
+            text-shadow: 0 0 10px #3ec1d3, 0 0 15px #8d3cff;
+            color: white;
+            animation: slide 8s linear infinite;
+        }
+
+        @keyframes slide {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+        .logo-container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+}
+
+.logo {
+    width: 250px; /* Ajusta el tamaño del logo */
+    height: auto; /* Mantén la proporción del logo */
+    border-radius: 10px; /* Opcional: esquinas redondeadas */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Opcional: sombra */
+}
+
+
+        /* Estilo para las imágenes circulares */
+        .team-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+            object-fit: cover;
+        }
+
+        /* Estilo para los primeros tres puestos */
+        .first-place {
+            background-color: #ffd700; /* Dorado */
+            text-shadow: 0 0 15px #ffd700, 0 0 25px #ffd700, 0 0 35px #ffd700;
+        }
+
+        .second-place {
+            background-color: #bcbdbb; /* Bronce */
+            text-shadow: 0 0 15px #bcbdbb, 0 0 25px #bcbdbb, 0 0 35px #bcbdbb;
+        }
+
+        .third-place {
+            background-color: #cd7f32; /* Bronce */
+            text-shadow: 0 0 15px #cd7f32, 0 0 25px #cd7f32, 0 0 35px #cd7f32;
+        }
+    </style>
+</head>
+<body>
+    <h1>Blind Test</h1>
+    <h2>Classement</h2>
+    <table id="tableau">
+        <thead>
+            <tr>
+                <th>Position</th>
+                <th>Équipe</th>
+                <th>Points</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Aquí se llenarán los datos dinámicamente -->
+        </tbody>
+    </table>
+    
+    <script>
+        let equipes = [
+            { nom: "Maxime", points: 0, foto: "https://cdn.discordapp.com/avatars/567356851671400449/44daddfe2425c9f0a94579c7f298877d?size=1024" },
+            { nom: "Mathius", points: 0, foto: "https://images-ext-1.discordapp.net/external/JG5PWXcz1m_WUPUQMS-v5qk0y5zZ_ktqF6rHNSeD1cQ/%3Fsize%3D4096%26ignore%3Dtrue/https/cdn.discordapp.com/avatars/540672929436925962/5b3920fe59d90da0ce46c8ceb8cc58d4.png?format=webp&quality=lossless" },
+            { nom: "Sofia", points: 0, foto: "https://i.pinimg.com/236x/83/2f/4b/832f4b6402488f9af671f25e27210e48.jpg" },
+            { nom: "Lorik", points: 0, foto: "https://cdn.discordapp.com/avatars/630793015509647370/3cc0641f498e6631401d95d860fa6720?size=1024" },
+            { nom: "Delathuy", points: 0, foto: "https://i.pinimg.com/474x/60/83/65/608365b346f0979256903432c4d56cee.jpg" },
+            { nom: "Basiglini", points: 0, foto: "https://cdn.discordapp.com/avatars/292652875988074497/654cc92ad3a52c00796fd6601f61ed1e?size=1024" }
+        ];
+    
+        function simulateRandomScores(callback) {
+            const duration = 3000; // Duración total de la animación (3 segundos)
+            const interval = 100; // Intervalo de cambio de números
+            let elapsed = 0;
+    
+            const intervalID = setInterval(() => {
+                elapsed += interval;
+                // Generar números aleatorios para simular el cambio
+                equipes.forEach(equipe => {
+                    equipe.currentPoints = Math.floor(Math.random() * 200); // Rango de 0 a 199
+                });
+    
+                mettreAJourTableau(true); // Mostrar puntos temporales
+    
+                if (elapsed >= duration) {
+                    clearInterval(intervalID);
+                    equipes.forEach(equipe => (equipe.currentPoints = equipe.points)); // Establecer los puntos finales
+                    mettreAJourTableau(false); // Mostrar puntos finales
+                    if (callback) callback();
+                }
+            }, interval);
+        }
+    
+        function mettreAJourTableau(isTemporary) {
+            equipes.sort((a, b) => (isTemporary ? b.currentPoints - a.currentPoints : b.points - a.points));
+    
+            const corpsTableau = document.querySelector("#tableau tbody");
+            corpsTableau.innerHTML = "";
+    
+            equipes.forEach((equipe, index) => {
+                let positionClass = "";
+                if (index === 0) {
+                    positionClass = "first-place";
+                } else if (index === 1) {
+                    positionClass = "second-place";
+                } else if (index === 2) {
+                    positionClass = "third-place";
+                }
+    
+                const points = isTemporary ? equipe.currentPoints : equipe.points;
+                const ligne = `
+                    <tr class="${positionClass}">
+                        <td>${index + 1}</td>
+                        <td>
+                            <img src="${equipe.foto}" alt="${equipe.nom}" class="team-image">
+                            ${equipe.nom}
+                        </td>
+                        <td>${points}</td>
+                    </tr>
+                `;
+                corpsTableau.innerHTML += ligne;
+            });
+        }
+    
+        // Iniciar la simulación de puntos al cargar la página
+        window.onload = () => simulateRandomScores(() => console.log("Animación completada"));
+    </script>
+    
+
+    <div class="footer-text">
+        <span>by: Mathius4554</span>
+    </div>
+
+    <div class="marquee-container">
+        <div class="marquee">Tombola 2€ le Ticket </div>
+    </div>
+</body>
+<div class="logo-container">
+    <img src="https://media.discordapp.net/attachments/1268299342750548090/1307280259196125275/pixelcut-export_7.png?ex=673b0c9d&is=6739bb1d&hm=20a2503234035409bc6eee2029f66674e94cbdea7c3bfba522e77ddcf50f0a94&=&format=webp&quality=lossless&width=550&height=309" alt="Logo" class="logo">
+</div>
+
+</html>
